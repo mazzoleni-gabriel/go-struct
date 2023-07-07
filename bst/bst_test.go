@@ -34,8 +34,13 @@ func TestBST_Insert(t *testing.T) {
 	})
 
 	t.Run("insert tree", func(t *testing.T) {
-		bst := BST{}
+		//          10
+		//         /  \
+		//        5    15
+		//       / \   / \
+		//      3   7 13  17
 
+		bst := BST{}
 		bst.Insert(10)
 		bst.Insert(5)
 		bst.Insert(3)
@@ -51,6 +56,48 @@ func TestBST_Insert(t *testing.T) {
 		assert.Equal(t, 15, bst.root.right.data)
 		assert.Equal(t, 13, bst.root.right.left.data)
 		assert.Equal(t, 17, bst.root.right.right.data)
+	})
+
+}
+
+func TestBST_Search(t *testing.T) {
+
+	t.Run("search existing", func(t *testing.T) {
+		//          10
+		//         /  \
+		//        5    15
+		//       / \   / \
+		//      3   7 13  17
+		bst := BST{}
+
+		bst.Insert(10)
+		bst.Insert(5)
+		bst.Insert(3)
+		bst.Insert(7)
+		bst.Insert(15)
+		bst.Insert(17)
+		bst.Insert(13)
+
+		assert.True(t, bst.Search(13))
+	})
+
+	t.Run("search non existing", func(t *testing.T) {
+		//          10
+		//         /  \
+		//        5    15
+		//       / \   / \
+		//      3   7 13  17
+		bst := BST{}
+
+		bst.Insert(10)
+		bst.Insert(5)
+		bst.Insert(3)
+		bst.Insert(7)
+		bst.Insert(15)
+		bst.Insert(17)
+		bst.Insert(13)
+
+		assert.False(t, bst.Search(14))
 	})
 
 }
