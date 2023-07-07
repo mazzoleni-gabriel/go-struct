@@ -50,3 +50,43 @@ func search(root *node, data int) *node {
 
 	return root
 }
+
+func (bst *BST) Max() int {
+	maxNode := max(bst.root)
+	if maxNode == nil {
+		return 0
+	}
+	return maxNode.data
+}
+
+func max(root *node) *node {
+	if root == nil {
+		return nil // Empty BST
+	}
+
+	if root.right == nil {
+		return root // Max
+	}
+
+	return max(root.right)
+}
+
+func (bst *BST) Min() int {
+	maxNode := min(bst.root)
+	if maxNode == nil {
+		return 0
+	}
+	return maxNode.data
+}
+
+func min(root *node) *node {
+	if root == nil {
+		return nil // Empty BST
+	}
+
+	if root.left == nil {
+		return root // Min
+	}
+
+	return min(root.left)
+}

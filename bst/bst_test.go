@@ -101,3 +101,61 @@ func TestBST_Search(t *testing.T) {
 	})
 
 }
+
+func TestBST_Max(t *testing.T) {
+
+	t.Run("max found", func(t *testing.T) {
+		//          10
+		//         /  \
+		//        5    15
+		//       / \   / \
+		//      3   7 13  17
+		bst := BST{}
+
+		bst.Insert(10)
+		bst.Insert(5)
+		bst.Insert(3)
+		bst.Insert(7)
+		bst.Insert(15)
+		bst.Insert(17)
+		bst.Insert(13)
+
+		assert.Equal(t, 17, bst.Max())
+	})
+
+	t.Run("max empty BST", func(t *testing.T) {
+		bst := BST{}
+
+		assert.Equal(t, 0, bst.Max())
+	})
+
+}
+
+func TestBST_Min(t *testing.T) {
+
+	t.Run("min found", func(t *testing.T) {
+		//          10
+		//         /  \
+		//        5    15
+		//       / \   / \
+		//      3   7 13  17
+		bst := BST{}
+
+		bst.Insert(10)
+		bst.Insert(5)
+		bst.Insert(3)
+		bst.Insert(7)
+		bst.Insert(15)
+		bst.Insert(17)
+		bst.Insert(13)
+
+		assert.Equal(t, 3, bst.Min())
+	})
+
+	t.Run("min empty BST", func(t *testing.T) {
+		bst := BST{}
+
+		assert.Equal(t, 0, bst.Min())
+	})
+
+}
