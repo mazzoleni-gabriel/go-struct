@@ -30,3 +30,23 @@ func insertNode(root *node, data int) *node {
 	}
 	return nil
 }
+
+func (bst *BST) Search(data int) bool {
+	return search(bst.root, data) != nil
+}
+
+func search(root *node, data int) *node {
+	if root == nil {
+		return nil
+	}
+
+	if data < root.data {
+		return search(root.left, data)
+	}
+
+	if data > root.data {
+		return search(root.right, data)
+	}
+
+	return root
+}
