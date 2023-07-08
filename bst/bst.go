@@ -117,3 +117,23 @@ func (bst *BST) BFS() (output []int) {
 
 	return output
 }
+
+func (bst *BST) DFS() (output []int) {
+	dfs(bst.root, &output)
+	return
+}
+
+func dfs(root *node, output *[]int) {
+	if root == nil {
+		return
+	}
+
+	*output = append(*output, root.data)
+	if root.left != nil {
+		dfs(root.left, output)
+	}
+
+	if root.right != nil {
+		dfs(root.right, output)
+	}
+}
