@@ -1,14 +1,14 @@
 package queue
 
 type Queue struct {
-	data []int
+	data []any
 }
 
-func (q *Queue) Push(data int) {
+func (q *Queue) Push(data any) {
 	q.data = append(q.data, data)
 }
 
-func (q *Queue) Pop() int {
+func (q *Queue) Pop() any {
 	if q.IsEmpty() {
 		panic("queue is empty")
 	}
@@ -17,7 +17,7 @@ func (q *Queue) Pop() int {
 	return data
 }
 
-func (q *Queue) Top() int {
+func (q *Queue) Top() any {
 	if q.IsEmpty() {
 		panic("queue is empty")
 	}
