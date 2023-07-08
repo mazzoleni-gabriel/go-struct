@@ -1,5 +1,9 @@
 package bst
 
+import (
+	"github.com/mazzoleni-gabriel/go-struct/queue"
+)
+
 type node struct {
 	data  int
 	right *node
@@ -89,4 +93,27 @@ func min(root *node) *node {
 	}
 
 	return min(root.left)
+}
+
+func (bst *BST) BFS() (output []int) {
+	if bst.root == nil {
+		return
+	}
+
+	priorityQueue := queue.Queue{}
+	priorityQueue.Push(bst.root)
+
+	for !priorityQueue.IsEmpty() {
+		root := priorityQueue.Pop().(*node)
+		output = append(output, root.data)
+
+		if root.left != nil {
+			priorityQueue.Push(root.left)
+		}
+		if root.right != nil {
+			priorityQueue.Push(root.right)
+		}
+	}
+
+	return output
 }
