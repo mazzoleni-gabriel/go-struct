@@ -2,6 +2,7 @@ package bst
 
 import (
 	"github.com/mazzoleni-gabriel/go-struct/queue"
+	"math"
 )
 
 type node struct {
@@ -136,4 +137,26 @@ func dfs(root *node, output *[]int) {
 	if root.right != nil {
 		dfs(root.right, output)
 	}
+}
+
+func (bst *BST) Height() int {
+	return height(bst.root)
+}
+
+func height(root *node) int {
+	if root == nil {
+		return 0
+	}
+
+	leftHeight := 1
+	rightHeight := 1
+
+	if root.left != nil {
+		leftHeight = leftHeight + height(root.left)
+	}
+
+	if root.right != nil {
+		rightHeight = rightHeight + height(root.right)
+	}
+	return int(math.Max(float64(leftHeight), float64(rightHeight)))
 }

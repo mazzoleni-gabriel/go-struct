@@ -203,3 +203,76 @@ func TestBST_DFS(t *testing.T) {
 		assert.Equal(t, []int{10, 5, 3, 7, 15, 13, 17}, bst.DFS())
 	})
 }
+
+func TestBST_Height(t *testing.T) {
+
+	t.Run("height 3", func(t *testing.T) {
+		//          10
+		//         /  \
+		//        5    15
+		//       / \   / \
+		//      3   7 13  17
+		bst := BST{}
+
+		bst.Insert(10)
+		bst.Insert(5)
+		bst.Insert(3)
+		bst.Insert(7)
+		bst.Insert(15)
+		bst.Insert(17)
+		bst.Insert(13)
+
+		assert.Equal(t, 3, bst.Height())
+	})
+
+	t.Run("height 4 left", func(t *testing.T) {
+		//          10
+		//         /
+		//        5
+		//       /
+		//      3
+		//     /
+		//    2
+		bst := BST{}
+
+		bst.Insert(10)
+		bst.Insert(5)
+		bst.Insert(3)
+		bst.Insert(2)
+
+		assert.Equal(t, 4, bst.Height())
+	})
+
+	t.Run("height 4 right", func(t *testing.T) {
+		//          10
+		//            \
+		//             15
+		//               \
+		//                17
+		//                 \
+		//                  20
+		bst := BST{}
+
+		bst.Insert(10)
+		bst.Insert(15)
+		bst.Insert(17)
+		bst.Insert(20)
+
+		assert.Equal(t, 4, bst.Height())
+	})
+
+	t.Run("height 1", func(t *testing.T) {
+		//          10
+		bst := BST{}
+
+		bst.Insert(10)
+
+		assert.Equal(t, 1, bst.Height())
+	})
+
+	t.Run("height 0", func(t *testing.T) {
+		bst := BST{}
+
+		assert.Equal(t, 0, bst.Height())
+	})
+}
