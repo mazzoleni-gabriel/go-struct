@@ -181,3 +181,25 @@ func TestBST_BFS(t *testing.T) {
 		assert.Equal(t, []int{10, 5, 15, 3, 7, 13, 17}, bst.BFS())
 	})
 }
+
+func TestBST_DFS(t *testing.T) {
+
+	t.Run("dfs", func(t *testing.T) {
+		//          10
+		//         /  \
+		//        5    15
+		//       / \   / \
+		//      3   7 13  17
+		bst := BST{}
+
+		bst.Insert(10)
+		bst.Insert(5)
+		bst.Insert(3)
+		bst.Insert(7)
+		bst.Insert(15)
+		bst.Insert(17)
+		bst.Insert(13)
+
+		assert.Equal(t, []int{10, 5, 3, 7, 15, 13, 17}, bst.DFS())
+	})
+}
