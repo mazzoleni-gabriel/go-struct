@@ -1,7 +1,7 @@
 package bst
 
 import (
-	"github.com/mazzoleni-gabriel/go-struct/queue"
+	"github.com/mazzoleni-gabriel/go-struct/structs/queue"
 	"math"
 )
 
